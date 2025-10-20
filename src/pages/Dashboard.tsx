@@ -1,6 +1,7 @@
 import { Brain, Briefcase, Users, Award, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import ButtonDark from "@/components/ButtonDarkMode"
 
 const Dashboard = () => {
   return (
@@ -18,27 +19,30 @@ const Dashboard = () => {
             <Button variant="ghost" size="sm">Dashboard</Button>
             <Button variant="ghost" size="sm">Opportunities</Button>
             <Button variant="ghost" size="sm">AI Assistant</Button>
+            <Button variant="ghost" size="sm">
+              <ButtonDark />
+            </Button>
             <Button variant="accent" size="sm">Connect Wallet</Button>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8">
         {/* Profile Header */}
-        <Card className="glass border-white/10 p-6 mb-6">
+      <div className="container mx-auto px-4 py-8 bg-white dark:bg-gray-900">
+        <Card className="glass border-white/10 dark:border-none p-6 mb-6 bg-white dark:bg-gray-900">
           <div className="flex items-start gap-6">
-            <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary to-accent p-1">
+            <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary to-accent p-1 ">
               <div className="h-full w-full rounded-full bg-card flex items-center justify-center text-3xl font-bold">
                 JD
               </div>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 text-gray-900 dark:text-white">
               <h1 className="text-3xl font-bold mb-2">John Doe</h1>
-              <p className="text-muted-foreground mb-4">Web3 Developer & Blockchain Architect</p>
+              <p className="text-gray-700 dark:text-gray-300 text-muted-foreground mb-4">Web3 Developer & Blockchain Architect</p>
               <div className="flex gap-2 flex-wrap">
-                <span className="px-3 py-1 rounded-full bg-primary/20 text-primary-foreground text-sm">Solidity</span>
-                <span className="px-3 py-1 rounded-full bg-accent/20 text-accent-foreground text-sm">React</span>
-                <span className="px-3 py-1 rounded-full bg-primary/20 text-primary-foreground text-sm">Smart Contracts</span>
+                <span className="px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/70 text-sm">Solidity</span>
+                <span className="px-3 py-1 rounded-full bg-accent/20 dark:bg-primary/70 text-sm">React</span>
+                <span className="px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/70 text-sm">Smart Contracts</span>
               </div>
             </div>
             <Button variant="hero">Generate AI CV</Button>

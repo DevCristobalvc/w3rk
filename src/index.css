@@ -40,6 +40,20 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* NEWS */
+    --verde1:#effaf2; 
+    --verde2:#d8f3de;
+    --verde3:#b3e7c2;
+    --verde4:#81d49f;
+    --verde5:#4dba78;
+    --verde6:#30b167;
+    --verde7:#1c7f48;
+
+    --Dark1:#0d1b14;
+    --Dark2:#101b16;
+    --Dark3:#141e17;
+    --Dark4:#0d0d0d;
+
     /* ASI Alliance Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(96 67% 74%), hsl(96 67% 84%));
     --gradient-accent: linear-gradient(135deg, hsl(96 67% 74%), hsl(0 0% 100%));
