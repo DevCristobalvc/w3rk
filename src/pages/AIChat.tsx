@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Send, Wallet, Paperclip, ArrowLeft } from "lucide-react";
+import { Send, Wallet, Paperclip, ArrowLeft, X, File, Image, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import asiLogo from "@/assets/asi-logo.png";
@@ -10,6 +10,13 @@ import asiLogo from "@/assets/asi-logo.png";
 type Message = {
   role: "user" | "assistant";
   content: string;
+  files?: File[];
+};
+
+type AttachedFile = {
+  file: File;
+  id: string;
+  preview?: string;
 };
 
 const AIChat = () => {
@@ -17,6 +24,8 @@ const AIChat = () => {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const [attachedFiles, setAttachedFiles] = useState<AttachedFile[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -36,22 +45,123 @@ const AIChat = () => {
     });
   };
 
-  const sendMessage = async () => {
-    if (!input.trim() || !isWalletConnected) return;
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    
+    if (files.length === 0) return;
 
-    const userMessage: Message = { role: "user", content: input };
+    // Validar tipos de archivo permitidos
+    const allowedTypes = [
+      'image/jpeg', 'image/png', 'image/gif', 'image/webp',
+      'application/pdf', 'text/plain', 'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ];
+
+    const validFiles = files.filter(file => {
+      if (!allowedTypes.includes(file.type)) {
+        toast({
+          title: "Invalid File Type",
+          description: `${file.name} is not a supported file type`,
+          variant: "destructive",
+        });
+        return false;
+      }
+      if (file.size > 10 * 1024 * 1024) { // 10MB limit
+        toast({
+          title: "File Too Large",
+          description: `${file.name} is larger than 10MB`,
+          variant: "destructive",
+        });
+        return false;
+      }
+      return true;
+    });
+
+    const newAttachedFiles: AttachedFile[] = validFiles.map(file => {
+      const id = Math.random().toString(36).substr(2, 9);
+      let preview: string | undefined;
+
+      if (file.type.startsWith('image/')) {
+        preview = URL.createObjectURL(file);
+      }
+
+      return { file, id, preview };
+    });
+
+    setAttachedFiles(prev => [...prev, ...newAttachedFiles]);
+    
+    if (validFiles.length > 0) {
+      toast({
+        title: "Files Attached",
+        description: `${validFiles.length} file(s) attached successfully`,
+      });
+    }
+  };
+
+  const removeFile = (fileId: string) => {
+    setAttachedFiles(prev => {
+      const fileToRemove = prev.find(f => f.id === fileId);
+      if (fileToRemove?.preview) {
+        URL.revokeObjectURL(fileToRemove.preview);
+      }
+      return prev.filter(f => f.id !== fileId);
+    });
+  };
+
+  const getFileIcon = (file: File) => {
+    if (file.type.startsWith('image/')) return Image;
+    if (file.type === 'application/pdf') return FileText;
+    return File;
+  };
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const sendMessage = async () => {
+    if ((!input.trim() && attachedFiles.length === 0) || !isWalletConnected) return;
+
+    const userMessage: Message = { 
+      role: "user", 
+      content: input,
+      files: attachedFiles.map(af => af.file)
+    };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
+    setAttachedFiles([]);
     setIsLoading(true);
 
     try {
+      // Preparar archivos para envío
+      const filesToSend = await Promise.all(attachedFiles.map(async (af) => ({
+        name: af.file.name,
+        type: af.file.type,
+        size: af.file.size,
+        data: await convertFileToBase64(af.file)
+      })));
+
       const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: [...messages, userMessage] }),
+        body: JSON.stringify({ 
+          messages: [...messages, userMessage],
+          files: filesToSend
+        }),
       });
 
       if (!response.ok || !response.body) throw new Error("Failed to get response");
@@ -172,6 +282,28 @@ const AIChat = () => {
                         : "bg-secondary text-foreground"
                     }`}
                   >
+                    {message.files && message.files.length > 0 && (
+                      <div className="mb-3 space-y-2">
+                        <p className="text-sm opacity-80 mb-2">📎 Attached files:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {message.files.map((file, fileIdx) => {
+                            const FileIcon = getFileIcon(file);
+                            return (
+                              <div
+                                key={fileIdx}
+                                className="flex items-center gap-2 bg-black/20 rounded-lg p-2 max-w-xs"
+                              >
+                                <FileIcon className="h-4 w-4" />
+                                <span className="text-sm truncate">{file.name}</span>
+                                <span className="text-xs opacity-60">
+                                  ({formatFileSize(file.size)})
+                                </span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                     <p className="whitespace-pre-wrap">{message.content}</p>
                   </div>
                 </div>
@@ -179,17 +311,79 @@ const AIChat = () => {
               <div ref={messagesEndRef} />
             </div>
 
+            {/* Attached Files Preview */}
+            {attachedFiles.length > 0 && (
+              <div className="mb-4 p-4 bg-secondary/50 rounded-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <Paperclip className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {attachedFiles.length} file(s) attached
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {attachedFiles.map((attachedFile) => {
+                    const FileIcon = getFileIcon(attachedFile.file);
+                    return (
+                      <div
+                        key={attachedFile.id}
+                        className="flex items-center gap-2 bg-background border rounded-lg p-2 max-w-xs"
+                      >
+                        {attachedFile.preview ? (
+                          <img
+                            src={attachedFile.preview}
+                            alt={attachedFile.file.name}
+                            className="h-8 w-8 object-cover rounded"
+                          />
+                        ) : (
+                          <FileIcon className="h-8 w-8 text-muted-foreground" />
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium truncate">
+                            {attachedFile.file.name}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {formatFileSize(attachedFile.file.size)}
+                          </p>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => removeFile(attachedFile.id)}
+                          className="h-6 w-6"
+                        >
+                          <X className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {/* Input */}
             <Card className="p-4 border bg-card">
               <div className="flex gap-3">
-                <Button variant="ghost" size="icon">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept="image/*,.pdf,.txt,.doc,.docx"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
+                <Button 
+                  variant="ghost" 
+                  size="icon"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="shrink-0"
+                >
                   <Paperclip className="h-5 w-5" />
                 </Button>
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && !e.shiftKey && sendMessage()}
-                  placeholder="Ask about your Web3 career..."
+                  placeholder="Ask about your Web3 career or attach files..."
                   className="flex-1 border-0 focus-visible:ring-0"
                   disabled={isLoading}
                 />
@@ -197,7 +391,7 @@ const AIChat = () => {
                   variant="default"
                   size="icon"
                   onClick={sendMessage}
-                  disabled={isLoading || !input.trim()}
+                  disabled={isLoading || (!input.trim() && attachedFiles.length === 0)}
                 >
                   <Send className="h-5 w-5" />
                 </Button>

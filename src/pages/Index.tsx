@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Brain, Shield, Users, ArrowRight, Wallet } from "lucide-react";
+import { Brain, Shield, Users, ArrowRight, Wallet, BarChart3, Sparkles, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import asiLogo from "@/assets/asi-logo.png";
@@ -16,6 +16,12 @@ const Index = () => {
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm">Features</Button>
             <Button variant="ghost" size="sm">About</Button>
+            <Link to="/dashboard">
+              <Button variant="ghost" size="sm" className="gap-2">
+                <BarChart3 className="h-4 w-4" />
+                Dashboard
+              </Button>
+            </Link>
             <Link to="/ai-chat">
               <Button variant="default" size="sm" className="gap-2">
                 <Wallet className="h-4 w-4" />
@@ -52,6 +58,7 @@ const Index = () => {
               </Link>
               <Link to="/dashboard">
                 <Button variant="outline" size="lg" className="gap-2">
+                  <BarChart3 className="h-5 w-5" />
                   View Dashboard
                 </Button>
               </Link>
@@ -132,6 +139,12 @@ const Index = () => {
                   Connect Wallet
                 </Button>
               </Link>
+              <Link to="/dashboard">
+                <Button variant="outline" size="lg" className="gap-2">
+                  <BarChart3 className="h-5 w-5" />
+                  Explore Dashboard
+                </Button>
+              </Link>
             </div>
           </Card>
         </div>
@@ -150,14 +163,16 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-3 text-foreground">Product</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">AI Agents</a></li>
+                <li><Link to="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link></li>
+                <li><Link to="/ai-chat" className="hover:text-foreground transition-colors">AI Chat</Link></li>
+                <li><Link to="/cv-builder" className="hover:text-foreground transition-colors">CV Builder</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-3 text-foreground">Technology</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="https://superintelligence.io/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">ASI Alliance</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">Web3 Integration</a></li>
               </ul>
             </div>
             <div>
