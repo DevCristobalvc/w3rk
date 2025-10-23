@@ -1,13 +1,19 @@
+import "./i18n";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Dashboard from "./pages/Dashboard";
-import AIChat from "./pages/AIChat";
-import CVBuilder from "./pages/CVBuilder";
-import NotFound from "./pages/NotFound";
+
+import MainLayout from "@/layouts/MainLayout";
+import Index from "@/pages/Index";
+import Dashboard from "@/pages/Dashboard";
+import AIChat from "@/pages/AIChat";
+import CVBuilder from "@/pages/CVBuilder";
+import Register from "@/pages/Register";
+import Loging from "@/pages/LogIn";
+import UserProfile from "@/pages/profile"
+import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -18,11 +24,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/ai-chat" element={<AIChat />} />
-          <Route path="/cv-builder" element={<CVBuilder />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/ai-chat" element={<AIChat />} />
+            <Route path="/cv-builder" element={<CVBuilder />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Loging />} />
+            <Route path="/profile" element={<UserProfile />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

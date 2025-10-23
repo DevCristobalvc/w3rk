@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "features": "Features",
+    "about": "About",
+    "connect_wallet": "Connect Wallet"
+  },
+  "menu": {
+    "profile": "Your profile",
+    "settings": "Settings",
+    "sign_in": "Sign in",
+    "notifications": "View notifications"
+  },
+  "hero": {
+    "powered": "Powered by ASI Alliance",
+    "title": "Decentralized AI for Professional Networks",
+    "description": "Connect with Web3 professionals through AI-powered matching, verified credentials, and decentralized reputation on the blockchain.",
+    "get_started": "Get Started",
+    "view_dashboard": "View Dashboard",
+    "stats": {
+      "professionals": "Professionals",
+      "projects": "Active Projects",
+      "daos": "DAOs"
+    }
+  },
+  "features": {
+    "title": "Built for Web3",
+    "subtitle": "Next-generation professional networking powered by decentralized AI",
+    "cards": {
+      "ai_assistant_title": "AI Career Assistant",
+      "ai_assistant_desc": "ASI Alliance agents analyze your profile and match you with opportunities.",
+      "verification_title": "On-Chain Verification",
+      "verification_desc": "All credentials verified on blockchain with complete transparency.",
+      "network_title": "Decentralized Network",
+      "network_desc": "Connect with DAOs and Web3 projects in a trustless environment."
+    }
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "description": "Join the decentralized professional network powered by ASI Alliance.",
+    "button": "Connect Wallet"
+  },
+  "footer": {
+    "product": "Product",
+    "features": "Features",
+    "ai_agents": "AI Agents",
+    "technology": "Technology",
+    "asi_alliance": "ASI Alliance",
+    "team": "Team",
+    "tagline": "Decentralized AI professional network",
+    "event": "ETHGlobal 2025",
+    "credits": "Built for {{event}} • Powered by ASI Alliance",
+    "members": "María • Juan José • Cristóbal • Juan"
+  }
+}

@@ -6,30 +6,8 @@ import ButtonDark from "@/components/ButtonDarkMode"
 const Dashboard = () => {
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="glass sticky top-0 z-50 border-b border-white/10">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-accent" />
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Web3 Network
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm">Dashboard</Button>
-            <Button variant="ghost" size="sm">Opportunities</Button>
-            <Button variant="ghost" size="sm">AI Assistant</Button>
-            <Button variant="ghost" size="sm">
-              <ButtonDark />
-            </Button>
-            <Button variant="accent" size="sm">Connect Wallet</Button>
-          </div>
-        </div>
-      </nav>
-
-        {/* Profile Header */}
-      <div className="container mx-auto px-4 py-8 bg-white dark:bg-gray-900">
-        <Card className="glass border-white/10 dark:border-none p-6 mb-6 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4 py-8">
+        <Card className="glass border-white/10 dark:border-none p-6 mb-6 bg-white dark:bg-[#0b0b0b]">
           <div className="flex items-start gap-6">
             <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary to-accent p-1 ">
               <div className="h-full w-full rounded-full bg-card flex items-center justify-center text-3xl font-bold">

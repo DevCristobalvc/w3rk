@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "features": "Características",
+    "about": "Acerca de",
+    "connect_wallet": "Conectar Billetera"
+  },
+  "menu": {
+    "profile": "Tu perfil",
+    "settings": "Configuración",
+    "sign_in": "Iniciar sesión",
+    "notifications": "Ver notificaciones"
+  },
+  "hero": {
+    "powered": "Impulsado por ASI Alliance",
+    "title": "IA Descentralizada para Redes Profesionales",
+    "description": "Conecta con profesionales Web3 mediante coincidencias impulsadas por IA, credenciales verificadas y reputación descentralizada en la blockchain.",
+    "get_started": "Comenzar",
+    "view_dashboard": "Ver Panel",
+    "stats": {
+      "professionals": "Profesionales",
+      "projects": "Proyectos Activos",
+      "daos": "DAOs"
+    }
+  },
+  "features": {
+    "title": "Creado para Web3",
+    "subtitle": "La nueva generación de redes profesionales impulsadas por IA descentralizada",
+    "cards": {
+      "ai_assistant_title": "Asistente de Carrera con IA",
+      "ai_assistant_desc": "Los agentes de ASI Alliance analizan tu perfil y te conectan con oportunidades.",
+      "verification_title": "Verificación On-Chain",
+      "verification_desc": "Todas las credenciales se verifican en blockchain con total transparencia.",
+      "network_title": "Red Descentralizada",
+      "network_desc": "Conéctate con DAOs y proyectos Web3 en un entorno sin intermediarios."
+    }
+  },
+  "cta": {
+    "title": "¿Listo para comenzar?",
+    "description": "Únete a la red profesional descentralizada impulsada por ASI Alliance.",
+    "button": "Conectar Billetera"
+  },
+  "footer": {
+    "product": "Producto",
+    "features": "Características",
+    "ai_agents": "Agentes de IA",
+    "technology": "Tecnología",
+    "asi_alliance": "ASI Alliance",
+    "team": "Equipo",
+    "tagline": "Red profesional de IA descentralizada",
+    "event": "ETHGlobal 2025",
+    "credits": "Creado para {{event}} • Impulsado por ASI Alliance",
+    "members": "María • Juan José • Cristóbal • Juan"
+  }
+}

@@ -3,40 +3,18 @@ import { Brain, Shield, Users, ArrowRight, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import asiLogo from "@/assets/asi-logo.png";
-import ButtonDark from "@/components/ButtonDarkMode"
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-white dark:bg-darkBg">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-white/80 backdrop-blur-xl sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src={asiLogo} alt="ASI Alliance" className="h-8" />
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm">Features</Button>
-            <Button variant="ghost" size="sm">About</Button>
-            <Button variant="ghost" size="sm">
-              <ButtonDark />
-            </Button>
-            <Link to="/ai-chat">
-              <Button variant="default" size="sm" className="gap-2">
-                <Wallet className="h-4 w-4" />
-                Connect Wallet
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+  const { t } = useTranslation();
 
-      {/* Hero Section */}
+  return (
+    <div className="min-h-screen">
       <section className="relative isolate overflow-hidden py-20 md:py-32">
         <div aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         >
-          <div
-            style={{
+          <div style={{
               clipPath:
                 "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
             }}

@@ -15,9 +15,9 @@ const ButtonDarkMode = () => {
       aria-pressed={isDark}
     >
       {isDark ? (
-        <Sun className="h-4 w-4 text-green-500" />
+        <Sun aria-hidden="true" className="size-6 text-gray-700 dark:text-gray-400"/>
       ) : (
-        <Moon className="h-4 w-4 text-gray-700" />
+        <Moon aria-hidden="true" className="size-6 text-gray-700 dark:text-gray-400"/>
       )}
     </Button>
   );
