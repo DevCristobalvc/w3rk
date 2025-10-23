@@ -216,6 +216,7 @@ const Dashboard = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -296,6 +297,15 @@ const Dashboard = () => {
                     <CheckCircle className="h-5 w-5 text-white" />
                   </div>
                 )}
+=======
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 py-8">
+        <Card className="glass border-white/10 dark:border-none p-6 mb-6 bg-white dark:bg-[#0b0b0b]">
+          <div className="flex items-start gap-6">
+            <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary to-accent p-1 ">
+              <div className="h-full w-full rounded-full bg-card flex items-center justify-center text-3xl font-bold">
+                JD
+>>>>>>> 97e01f5 (added new elements se crea un header global y se crearon otros componentes)
               </div>
               
               <div className="flex-1">
