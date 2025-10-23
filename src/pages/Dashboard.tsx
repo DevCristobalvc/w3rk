@@ -216,88 +216,6 @@ const Dashboard = () => {
   ];
 
   return (
-<<<<<<< HEAD
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/3 rounded-full blur-2xl animate-pulse delay-500"></div>
-      </div>
-      {/* Enhanced Navigation */}
-      <nav className="glass sticky top-0 z-50 border-b border-white/10 backdrop-blur-xl">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Sparkles className="h-6 w-6 text-white" />
-            </div>
-            <div>
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Web3 Network
-              </span>
-              <p className="text-xs text-muted-foreground">Powered by ASI Alliance</p>
-            </div>
-          </Link>
-          
-          <div className="flex items-center gap-2">
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="gap-2">
-                <Home className="h-4 w-4" />
-                Home
-              </Button>
-            </Link>
-            <Button variant="ghost" size="sm" className="gap-2 relative">
-              <Bell className="h-4 w-4" />
-              {notifications.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 min-w-[18px] h-[18px] flex items-center justify-center">
-                  {notifications.length}
-                </span>
-              )}
-            </Button>
-            <Link to="/ai-chat">
-              <Button variant="ghost" size="sm" className="gap-2">
-                <Brain className="h-4 w-4" />
-                AI Chat
-              </Button>
-            </Link>
-            <Link to="/cv-builder">
-              <Button variant="ghost" size="sm" className="gap-2">
-                <User className="h-4 w-4" />
-                CV Builder
-              </Button>
-            </Link>
-            <Button variant="accent" size="sm" className="gap-2 glow-accent hover:scale-105 transition-transform duration-200">
-              <Zap className="h-4 w-4" />
-              Connect Wallet
-            </Button>
-          </div>
-        </div>
-      </nav>
-
-      <div className="container mx-auto px-6 py-8 relative z-10">
-        {/* Welcome Message */}
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-2">Welcome back, {userProfile.name.split(' ')[0]}! 👋</h1>
-          <p className="text-muted-foreground">Here's what's happening in your Web3 professional network today.</p>
-        </div>
-
-        {/* Enhanced Profile Header */}
-        <Card className="glass border-white/10 p-8 mb-8 overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5"></div>
-          <div className="relative">
-            <div className="flex items-start gap-8">
-              <div className="relative">
-                <div className="h-32 w-32 rounded-2xl bg-gradient-to-br from-primary to-accent p-1">
-                  <div className="h-full w-full rounded-xl bg-card flex items-center justify-center text-4xl font-bold text-primary">
-                    {userProfile.avatar}
-                  </div>
-                </div>
-                {userProfile.verified && (
-                  <div className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-white" />
-                  </div>
-                )}
-=======
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
         <Card className="glass border-white/10 dark:border-none p-6 mb-6 bg-white dark:bg-[#0b0b0b]">
@@ -305,7 +223,6 @@ const Dashboard = () => {
             <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary to-accent p-1 ">
               <div className="h-full w-full rounded-full bg-card flex items-center justify-center text-3xl font-bold">
                 JD
->>>>>>> 97e01f5 (added new elements se crea un header global y se crearon otros componentes)
               </div>
               
               <div className="flex-1">

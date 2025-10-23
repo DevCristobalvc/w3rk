@@ -6,36 +6,7 @@ import asiLogo from "@/assets/asi-logo.png";
 import { useTranslation } from "react-i18next";
 
 const Index = () => {
-<<<<<<< HEAD
-  return (
-    <div className="min-h-screen bg-white dark:bg-darkBg">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-white/80 backdrop-blur-xl sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src={asiLogo} alt="ASI Alliance" className="h-8" />
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm">Features</Button>
-            <Button variant="ghost" size="sm">About</Button>
-            <Link to="/dashboard">
-              <Button variant="ghost" size="sm" className="gap-2">
-                <BarChart3 className="h-4 w-4" />
-                Dashboard
-              </Button>
-            </Link>
-            <Link to="/ai-chat">
-              <Button variant="default" size="sm" className="gap-2">
-                <Wallet className="h-4 w-4" />
-                Connect Wallet
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
-=======
   const { t } = useTranslation();
->>>>>>> 97e01f5 (added new elements se crea un header global y se crearon otros componentes)
 
   return (
     <div className="min-h-screen">

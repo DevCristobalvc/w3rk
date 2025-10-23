@@ -12,7 +12,7 @@ import AIChat from "@/pages/AIChat";
 import CVBuilder from "@/pages/CVBuilder";
 import Register from "@/pages/Register";
 import Loging from "@/pages/LogIn";
-import UserProfile from "@/pages/profile"
+import UserProfile from "@/pages/Profile"
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
