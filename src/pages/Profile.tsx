@@ -2,6 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { useNavigate } from "react-router-dom";
+
 import {
   Activity as ActivityIcon,
   FileText,
@@ -71,7 +73,8 @@ const actividad: ActivityItem[] = [
 ];
 
 export default function Profile() {
-  // Estadísticas mock
+  const navigate = useNavigate();
+
   const stats = {
     cvsCreados: cvs.length,
     aplicaciones: 12,
@@ -79,9 +82,9 @@ export default function Profile() {
   };
 
   return (
+
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
-        {/* Header de Perfil */}
         <Card className="glass border-white/10 dark:border-none p-6 mb-6 bg-white dark:bg-[#0b0b0b]">
           <div className="flex items-start gap-6">
             <div className="h-24 w-24 rounded-full bg-gradient-to-br from-primary to-accent p-1">
@@ -143,7 +146,12 @@ export default function Profile() {
             <CardHeader className="pb-2">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-base">CVs creados</CardTitle>
-                <Button size="sm" variant="outline" className="px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/70 text-sm">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/70 text-sm"
+                  onClick={() => navigate("/create-cv")}
+                >
                   Nuevo CV
                 </Button>
               </div>

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import asiLogo from "@/assets/asi-logo.png";
 import ButtonDark from "@/components/ButtonDarkMode";
 import LanguageToggle from "@/components/LanguageToggle/Lenguaje";
-import ProfileMenu from "@/components/ProfileHeader";
+import ProfileMenu from "@/components/Profile/ProfileHeader";
 import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
