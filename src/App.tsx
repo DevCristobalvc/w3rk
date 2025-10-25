@@ -12,7 +12,8 @@ import AIChat from "@/pages/AIChat";
 import CVBuilder from "@/pages/CVBuilder";
 import Register from "@/pages/Register";
 import Loging from "@/pages/LogIn";
-import UserProfile from "@/pages/profile"
+import UserProfile from "@/pages/Profile";
+import CreateCV from "@/pages/CreateCV"
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Loging />} />
             <Route path="/profile" element={<UserProfile />} />
+            <Route path="/create-cv" element={<CreateCV />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

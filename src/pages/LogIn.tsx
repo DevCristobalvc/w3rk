@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
-  const CORREO_DEMO = "juanjos@hotmail.es";
+  const CORREO_DEMO = "juanjoseobrrero95@gmail.com";
   const PASSWORD_DEMO = "123456";
 
   const navigate = useNavigate();
@@ -17,13 +17,10 @@ export default function Login() {
     setError(null);
     setLoading(true);
 
-    // Simulamos latencia mínima
     setTimeout(() => {
       if (email.trim().toLowerCase() === CORREO_DEMO && pwd === PASSWORD_DEMO) {
-        // ✅ éxito
-        navigate("/dashboard");
+        navigate("/profile");
       } else {
-        // ❌ error
         setError("Correo o contraseña incorrectos.");
       }
       setLoading(false);
@@ -31,8 +28,7 @@ export default function Login() {
   };
 
   const handleGoogle = () => {
-    // Para pruebas, redirigimos también (simulación de login con Google)
-    navigate("/dashboard");
+    navigate("/profile");
   };
 
   return (

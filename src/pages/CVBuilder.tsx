@@ -5,27 +5,8 @@ import { Card } from "@/components/ui/card";
 const CVBuilder = () => {
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="glass sticky top-0 z-50 border-b border-white/10">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-accent" />
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Web3 Network
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm">Dashboard</Button>
-            <Button variant="ghost" size="sm">Opportunities</Button>
-            <Button variant="ghost" size="sm">AI Assistant</Button>
-            <Button variant="accent" size="sm">Connect Wallet</Button>
-          </div>
-        </div>
-      </nav>
-
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
           <div className="mb-8 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent mb-4">
               <Sparkles className="h-4 w-4" />
@@ -37,9 +18,7 @@ const CVBuilder = () => {
             </p>
           </div>
 
-          {/* CV Preview */}
           <Card className="glass border-white/10 p-8 mb-6">
-            {/* Profile Section */}
             <div className="mb-8 pb-8 border-b border-white/10">
               <div className="flex items-start justify-between mb-4">
                 <div>
