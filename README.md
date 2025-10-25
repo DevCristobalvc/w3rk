@@ -1,6 +1,6 @@
 # 🌐 W3rk — AI-Powered Web3 CV Builder & Decentralized Professional Network
 
-Work3 is a **decentralized professional network** and **AI-powered Web3 CV builder** that transforms your on-chain activity into a verified professional identity.
+W3rk is a **decentralized professional network** and **AI-powered Web3 CV builder** that transforms your on-chain activity into a verified professional identity.
 
 Users connect their wallets, import their Web3 credentials (NFTs, POAPs, DAO contributions, on-chain roles), and Work3 automatically generates a **dynamic, verifiable CV / portfolio** powered by AI and blockchain.
 
