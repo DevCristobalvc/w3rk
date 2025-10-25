@@ -52,7 +52,8 @@ async function processFiles(files: any[]): Promise<string> {
         fileContent += `Nota: Tipo de archivo no procesable directamente. Por favor, describe el contenido o conviértelo a texto.\n`;
       }
     } catch (error) {
-      fileContent += `\nError procesando ${file.name}: ${error.message}\n`;
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      fileContent += `\nError procesando ${file.name}: ${errorMessage}\n`;
     }
   }
   
