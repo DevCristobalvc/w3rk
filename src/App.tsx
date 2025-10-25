@@ -9,7 +9,6 @@ import MainLayout from "@/layouts/MainLayout";
 import Index from "@/pages/Index";
 import Dashboard from "@/pages/Dashboard";
 import AIChat from "@/pages/AIChat";
-import CVBuilder from "@/pages/CVBuilder";
 import Register from "@/pages/Register";
 import Loging from "@/pages/LogIn";
 import UserProfile from "@/pages/Profile";
@@ -29,7 +28,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/ai-chat" element={<AIChat />} />
-            <Route path="/cv-builder" element={<CVBuilder />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Loging />} />
             <Route path="/profile" element={<UserProfile />} />

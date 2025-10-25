@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Upload, FileText, Wand2, Sparkles } from "lucide-react";
+import { Upload, FileText, Wand2, Sparkles, Loader2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 
@@ -37,8 +37,42 @@ export default function CVForm({
   setAiPrompt,
 }: Props) {
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isExtracting, setIsExtracting] = useState(false);
 
-  // Simulación de generación IA (puedes conectar con tu API)
+  // 🔹 Función: cuando el usuario sube un archivo
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const uploadedFile = e.target.files?.[0];
+    if (!uploadedFile) return;
+
+    setFile(uploadedFile);
+    setIsExtracting(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", uploadedFile);
+
+      const res = await fetch("http://localhost:5000/api/extract-cv", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      // ✅ Asignar los datos extraídos por IA
+      if (data.fullName) setFullName(data.fullName);
+      if (data.headline) setHeadline(data.headline);
+      if (data.summary) setSummary(data.summary);
+
+      // (Opcional: puedes guardar experience, education, skills más adelante)
+    } catch (err) {
+      console.error("❌ Error al procesar CV:", err);
+      alert("Hubo un error al analizar el CV. Intenta de nuevo.");
+    } finally {
+      setIsExtracting(false);
+    }
+  };
+
+  // ✨ Función: generación de resumen con IA (cuando creas desde cero)
   const handleGenerateAI = async () => {
     if (!aiPrompt.trim()) return;
     setIsGenerating(true);
@@ -56,6 +90,7 @@ export default function CVForm({
 
   return (
     <>
+      {/* 🔹 Selección de modo (Subir o Crear desde cero) */}
       <div className="grid grid-cols-2 gap-3">
         <button
           onClick={() => setMode("upload")}
@@ -70,7 +105,7 @@ export default function CVForm({
             <span className="text-sm font-medium">Subir CV existente</span>
           </div>
           <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-            Carga tu PDF/DOCX y deja que la IA lo mejore.
+            Carga tu PDF/DOCX y deja que la IA lo analice.
           </p>
         </button>
 
@@ -94,19 +129,28 @@ export default function CVForm({
 
       <Separator className="my-4" />
 
-      {/* Subir archivo */}
+      {/* 🔹 Si elige subir archivo */}
       {mode === "upload" ? (
         <div className="space-y-4">
           <Label className="text-sm font-medium">Archivo</Label>
           <Input
             type="file"
             accept=".pdf,.doc,.docx"
-            onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+            onChange={handleFileUpload}
             className="rounded-xl"
           />
 
+          {/* Estado de análisis */}
+          {isExtracting && (
+            <div className="flex items-center text-sm text-indigo-600 gap-2 mt-2">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Analizando tu CV con IA...
+            </div>
+          )}
+
+          {/* Archivo cargado */}
           {file && (
-            <div className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+            <div className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300 mt-2">
               <FileText className="h-4 w-4" />
               {file.name}
               <Badge variant="secondary" className="rounded-full">
@@ -115,11 +159,12 @@ export default function CVForm({
             </div>
           )}
 
-          <p className="text-xs text-zinc-500">
-            * Se procesará automáticamente al finalizar.
+          <p className="text-xs text-zinc-500 mt-2">
+            * Se procesará automáticamente al finalizar la carga.
           </p>
         </div>
       ) : (
+        /* 🔹 Si elige crear desde cero */
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -182,8 +227,17 @@ export default function CVForm({
               disabled={!aiPrompt || isGenerating}
               className="mt-2 flex items-center gap-2 rounded-xl"
             >
-              <Sparkles className="h-4 w-4" />
-              {isGenerating ? "Generando..." : "Generar con IA"}
+              {isGenerating ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Generando...
+                </>
+              ) : (
+                <>
+                  <Sparkles className="h-4 w-4" />
+                  Generar con IA
+                </>
+              )}
             </Button>
           </div>
 

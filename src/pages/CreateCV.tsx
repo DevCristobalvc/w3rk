@@ -35,10 +35,8 @@ const TEMPLATES = [
 export default function CreateCV() {
   const navigate = useNavigate();
 
-  // Control del paso
   const [step, setStep] = useState<1 | 2>(1);
 
-  // Estado general
   const [mode, setMode] = useState<SourceMode>("upload");
   const [file, setFile] = useState<File | null>(null);
   const [fullName, setFullName] = useState("");
