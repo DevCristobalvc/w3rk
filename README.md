@@ -53,7 +53,7 @@ Users connect their wallets, import their Web3 credentials (NFTs, POAPs, DAO con
 
 ## 🛠️ System Architecture
 
-Work3 combines **AI + Web3** to create a trusted identity graph:
+W3rk combines **AI + Web3** to create a trusted identity graph:
 
 ```
 Wallet → Credential Extraction → AI CV Builder → On-Chain Credential Storage → Public Verifiable Profile
