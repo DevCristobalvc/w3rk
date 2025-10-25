@@ -1,73 +1,123 @@
-# Welcome to your Lovable project
+# 🌐 W3rk — AI-Powered Web3 CV Builder & Decentralized Professional Network
 
-## Project info
+Work3 is a **decentralized professional network** and **AI-powered Web3 CV builder** that transforms your on-chain activity into a verified professional identity.
 
-**URL**: https://lovable.dev/projects/bef9308f-d393-4642-8a66-edcb68c70081
+Users connect their wallets, import their Web3 credentials (NFTs, POAPs, DAO contributions, on-chain roles), and Work3 automatically generates a **dynamic, verifiable CV / portfolio** powered by AI and blockchain.
 
-## How can I edit this code?
+> ✅ Built for builders, founders, DAO contributors, and Web3 professionals who want a **trusted, verifiable reputation** across the onchain ecosystem.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🚀 Key Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bef9308f-d393-4642-8a66-edcb68c70081) and start prompting.
+### 🧬 **AI-Powered CV & Portfolio Builder**
 
-Changes made via Lovable will be committed automatically to this repo.
+* Automatically extracts user credentials from wallet history
+* Generates a professional CV + Web3 portfolio tailored to your onchain experience
+* ASI Agents (Mentor, Recruiter, Analyst) improve your profile over time with suggestions
 
-**Use your preferred IDE**
+### 🔗 **On-Chain Credential Verification**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* Proof-based credentials backed by **Base / Ethereum**
+* Verifiable references, endorsements, applications, or roles via smart contracts
+* Publicly viewable via **Blockscout** or blockchain explorers
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🏆 **Web3 Reputation Layer**
 
-Follow these steps:
+* Aggregate NFTs, POAPs, DAO roles, hackathon participation, contributions
+* Continuous portfolio evolution as users gain achievements onchain
+* Enables trust-based network effects for hiring, collaboration, and grants
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🧠 **ASI-Driven Networking Experience**
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+* AI Agents suggest:
 
-# Step 3: Install the necessary dependencies.
-npm i
+  * Relevant job opportunities
+  * Potential collaborators
+  * DAO contributions & grants that match your skills
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+---
+
+## 🧱 Tech Stack
+
+| Layer                | Tech                                                      |
+| -------------------- | --------------------------------------------------------- |
+| **Frontend**         | Next.js, TailwindCSS, Viem + Wagmi, Base SDK              |
+| **Smart Contracts**  | Solidity, Hardhat (deployed on Base)                      |
+| **Credential Layer** | Hedera SDK for verifiable credentials & proofs            |
+| **AI Agent Layer**   | ASI (ASI:One, Agentverse) orchestrating agent workflows   |
+| **Storage**          | IPFS / Pinata for media, CV exports & user portfolios     |
+| **Verification**     | Blockscout + Hedera Mirror Nodes for onchain transparency |
+
+---
+
+## 🛠️ System Architecture
+
+Work3 combines **AI + Web3** to create a trusted identity graph:
+
+```
+Wallet → Credential Extraction → AI CV Builder → On-Chain Credential Storage → Public Verifiable Profile
+```
+
+* Wallet connection imports on-chain history & digital credentials
+* ASI agents build a professional narrative from onchain data
+* Credentials & references are hashed + anchored on Hedera & Base
+* Profiles are publicly verifiable, shareable & tamper-proof
+
+---
+
+## ✨ Inspired Innovation
+
+Features inspired by CV builders like **Sabionet**, but Web3-native:
+
+* Auto-extracts achievements from NFTs, transactions & DAO roles
+* Real-time profile evolution as users earn new tokens or roles
+* Agent-driven suggestions for career and network growth
+* Decentralized identity + reputation that **you own**, not LinkedIn
+
+---
+
+## 📍 Live Demo
+
+👉 **App:** [https://w3rk.lovable.app/](https://w3rk.lovable.app/)
+*(work-in-progress — hackathon build)*
+
+---
+
+## 📦 Installation (Local Development)
+
+```bash
+git clone https://github.com/DevCristobalvc/w3rk
+cd w3rk
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🧪 Smart Contracts
 
-**Use GitHub Codespaces**
+* Language: **Solidity**
+* Framework: **Hardhat**
+* Network: **Base**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+> Contract addresses will be added once deployed.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🗺️ Roadmap
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+* ✅ Wallet login & credential extraction
+* 🔜 AI multi-agent CV builder & role suggestions
+* 🔜 On-chain endorsements & references
+* 🔜 Profile NFT mint for portable identity
+* 🔜 Talent marketplace for DAOs & startups
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/bef9308f-d393-4642-8a66-edcb68c70081) and click on Share -> Publish.
+## 🏆 Built for ETHGlobal / Hackathon Submission
 
-## Can I connect a custom domain to my Lovable project?
+This repo is under active development and part of a hackathon submission.
+Commits represent rapid build cycles, experimentation, and iteration.
 
-Yes, you can!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
