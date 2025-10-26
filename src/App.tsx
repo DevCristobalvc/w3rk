@@ -12,7 +12,7 @@ import AIChat from "@/pages/AIChat";
 import Register from "@/pages/Register";
 import Loging from "@/pages/LogIn";
 import UserProfile from "@/pages/Profile";
-import CreateCV from "@/pages/CreateCV"
+import CreateCV from "@/pages/CreateCV";
 import NotFound from "@/pages/NotFound";
 import Agents from "@/pages/Agents";
 import Knowledge from "@/pages/Knowledge";
