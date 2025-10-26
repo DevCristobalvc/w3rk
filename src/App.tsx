@@ -14,6 +14,10 @@ import Loging from "@/pages/LogIn";
 import UserProfile from "@/pages/Profile";
 import CreateCV from "@/pages/CreateCV"
 import NotFound from "@/pages/NotFound";
+import Agents from "@/pages/Agents";
+import Knowledge from "@/pages/Knowledge";
+import IPFS from "@/pages/IPFS";
+import Docs from "@/pages/Docs";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +36,10 @@ const App = () => (
             <Route path="/login" element={<Loging />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/create-cv" element={<CreateCV />} />
+            <Route path="/agents" element={<Agents />} />
+            <Route path="/knowledge" element={<Knowledge />} />
+            <Route path="/ipfs" element={<IPFS />} />
+            <Route path="/docs" element={<Docs />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
